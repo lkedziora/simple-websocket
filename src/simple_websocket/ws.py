@@ -154,7 +154,7 @@ class Base:
                     raise OSError()
                 self.ws.receive_data(in_data)
                 self.connected = self._handle_events()
-            except (OSError, ConnectionResetError):  # pragma: no cover
+            except (OSError, ConnectionResetError, LocalProtocolError):  # pragma: no cover
                 self.connected = False
                 self.event.set()
                 break
